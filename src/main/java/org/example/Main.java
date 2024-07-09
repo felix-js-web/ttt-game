@@ -25,18 +25,13 @@ public class Main {
         printBoard(gameBoard);
         boolean playerMove = true;  // simplify for human to start
         while (!winOrLoseOrDraw(gameBoard)) {
-            playermoveorcomputermove(gameBoard, playerMove);
+            if (playerMove) {
+                playerMove(gameBoard);
+            } else {
+                computerMove(gameBoard);
+            }
             playerMove = !playerMove;
             printBoard(gameBoard);
-        }
-        printBoard(gameBoard);
-    }
-
-    private static void playermoveorcomputermove(char[][] gameBoard, boolean playerMove) {
-        if (playerMove) {
-            playerMove(gameBoard);
-        } else {
-            computerMove(gameBoard);
         }
     }
 
@@ -60,7 +55,6 @@ public class Main {
     private static void computerMove(char[][] gameBoard) {
         Random rand = new Random();
         while (!updateBoard(C, rand.nextInt(NUMBER_OF_SIDES) + 1, rand.nextInt(NUMBER_OF_SIDES) + 1, gameBoard)) {
-//            System.out.println("computer moved to" + move);
         }
     }
 
