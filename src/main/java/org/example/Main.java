@@ -10,17 +10,14 @@ public class Main {
 
     static Scanner input = new Scanner(System.in);
 
-    static int NUMBER_OF_SIDES = 3;
+    static int NUMBER_OF_SIDES = 10;
     static final char H = 'H';
     static final char C = 'C';
 
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        char[][] gameBoard = {
-                {'-', '-', '-'},
-                {'-', '-', '-'},
-                {'-', '-', '-'}
-        };
+        char[][] gameBoard = new char[NUMBER_OF_SIDES][NUMBER_OF_SIDES];
+        fillIngameBoardPreGame(gameBoard);
         //show start of the game board
         printBoard(gameBoard);
         boolean playerMove = true;  // simplify for human to start
@@ -32,6 +29,14 @@ public class Main {
             }
             playerMove = !playerMove;
             printBoard(gameBoard);
+        }
+    }
+
+    private static void fillIngameBoardPreGame(char[][] gameBoard) {
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (char j = 0; j < gameBoard[i].length; j++) {
+                gameBoard[i][j] = '-';
+            }
         }
     }
 
